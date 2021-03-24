@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Button, TextInput } from 'react-native'
 
 import firebase from 'firebase'
+import 'firebase/firestore'
 
 export class Login extends Component {
     constructor(props){
@@ -18,12 +19,12 @@ export class Login extends Component {
     onSignUp(){
         const { email, password } = this.state;
         firebase.auth().signInWithEmailAndPassword(email, password)
-        .then((result) => {
-            console.log(result)
-        })
-        .catch((error) => {
-            console.log(error)
-        })
+            .then((result) => {
+                console.log(result)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }
 
     render() {
