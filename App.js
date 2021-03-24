@@ -3,13 +3,6 @@ import React, { Component } from 'react'
 
 import { View, Text } from 'react-native'
 import * as firebase from 'firebase'
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-
-import LandingScreen from './components/auth/Landing'
-import RegisterScreen from './components/auth/Register'
-import LoginScreen from './components/auth/Login'
-import MainScreen from './components/Main'
 
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
@@ -27,6 +20,16 @@ const firebaseConfig = {
 	measurementId: "G-YZS8FWC64P"
 };
 
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import LandingScreen from './components/auth/Landing'
+import RegisterScreen from './components/auth/Register'
+import LoginScreen from './components/auth/Login'
+import MainScreen from './components/Main'
+import AddScreen from './components/main/Add'
+
+
 if(firebase.apps.length === 0){
   	firebase.initializeApp(firebaseConfig)
 }
@@ -37,7 +40,7 @@ export class App extends Component {
   	constructor(props){
     	super(props);
     	this.state = {
-      	loaded: false
+      		loaded: false
     	}
   	}
 
@@ -82,6 +85,7 @@ export class App extends Component {
 				<NavigationContainer>
 					<Stack.Navigator intitialRouteName="Main">
             			<Stack.Screen name="Main" component={ MainScreen } options={{ headerShown: false}}/>
+						<Stack.Screen name="Add" component={ AddScreen }/>
           			</Stack.Navigator>
 				</NavigationContainer>
 			</Provider>
